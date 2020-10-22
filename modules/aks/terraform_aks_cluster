@@ -1,0 +1,240 @@
+ACR-->
+
+azurerm_container_registry.acr: Creating...
+azurerm_container_registry.acr: Creation complete after 8s [id=/subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourceGroups/K8/providers/Microsoft.ContainerRegistry/registries/ACRKubernetes123]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+id = /subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourceGroups/K8/providers/Microsoft.ContainerRegistry/registries/ACRKubernetes123
+login_server = acrkubernetes123.azurecr.io
+=================================================================================================================================================
+
+STORAGE_ACCOUNT-->
+
+
+
+var.access_tier
+  The access tier of the Storage Account
+
+  Enter a value: Cool
+
+var.kind
+  The kind of the Storage Account
+
+  Enter a value: Storage
+
+var.location
+  Azure region of the Storage Account
+
+  Enter a value: Central India
+
+var.name
+  The name of the Storage Account
+
+  Enter a value: k8storage
+
+var.replication_type
+  The replication type of the Storage Account
+
+  Enter a value: GRS
+
+var.resource_group_name
+  Name of the Storage Account resource group
+
+  Enter a value: K8
+
+var.tier
+  The tier of the Storage Account
+
+  Enter a value: Standard
+
+
+azurerm_storage_account.storage: Creating...
+azurerm_storage_account.storage: Still creating... [10s elapsed]
+azurerm_storage_account.storage: Still creating... [20s elapsed]
+azurerm_storage_account.storage: Creation complete after 20s [id=/subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourceGroups/K8/providers/Microsoft.Storage/storageAccounts/k8storage2247]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+id = /subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourceGroups/K8/providers/Microsoft.Storage/storageAccounts/k8storage2247
+
+====================================================================================
+VIRTUAL_NETWORK
+
+
+var.address_space
+  The address space (CIDR notation) of the Virtual Network
+
+  Enter a value: ["10.0.0.0/16"]
+
+var.location
+  Azure region of the Virtual Network
+
+  Enter a value: Central India
+
+var.name
+  The name of the Virtual Network
+
+  Enter a value: k8kubernetes12
+
+var.resource_group_name
+  Name of the Virtual Network resource group
+
+  Enter a value: K8
+
+var.subnet_address_space
+  The address space (CIDR notation) of the Virtual Network subnet
+
+  Enter a value: 10.0.0.0/24
+
+var.subnet_name
+  The name of the Virtual Network subnet
+
+  Enter a value: k8kubersubnet
+
+
+Outputs:
+
+id = /subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourceGroups/K8/providers/Microsoft.Network/virtualNetworks/k8kubernetes12
+subnet_id = /subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourceGroups/K8/providers/Microsoft.Network/virtualNetworks/k8kubernetes12/subnets/k8kubersubnet
+========================================================================================
+LOG_ANALYTICS_WORKSPACE
+
+var.location
+  Azure region of the Log Analytics workspace
+
+  Enter a value: Central India
+
+var.name
+  The name of the Log Analytics workspace
+
+  Enter a value: K8WorkSpace227 
+
+var.resource_group_name
+  Name of the Log Analytics workspace resource group
+
+  Enter a value: K8
+
+var.retention
+  The retention time of the Log Analytics workspace
+
+  Enter a value: 7
+
+var.sku
+  The SKU of the Log Analytics workspace
+
+  Enter a value: Free
+
+
+Creation complete after 1m5s [id=/subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourcegroups/k8/providers/microsoft.operationalinsights/workspaces/k8workspace227]
+
+
+
+===============================================================================================
+AKS_CLUSTER_USING_TERRAFORM
+
+
+var.aad_group_name
+  Name of the Azure AD group for cluster-admin access
+
+  Enter a value: AKSADKuber227
+
+var.additional_node_pools
+  The map object to configure one or several additional node pools with number of worker nodes, worker node VM size and Availability Zones.
+
+  Enter a value: {pool1= ({node_count= 1,vm_size = "Standard_DS3_v2",zones= null,labels= null,taints= null,node_os= "Linux",cluster_auto_scaling= false,cluster_auto_scaling_min_count = null,cluster_auto_scaling_max_count = null})}
+
+var.addons
+  Defines which addons will be activated.
+
+  Enter a value: ({oms_agent = true,kubernetes_dashboard = true,azure_policy= true})
+
+var.api_auth_ips
+  Whitelist of IP addresses that are allowed to access the AKS Master Control Plane API
+
+  Enter a value: 
+
+var.container_registry_id
+  Resource id of the ACR
+
+  Enter a value: /subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourceGroups/K8/providers/Microsoft.ContainerRegistry/registries/ACRKubernetes123
+
+var.default_node_pool
+  The object to configure the default node pool with number of worker nodes, worker node VM size and Availability Zones.
+
+  Enter a value: ({name= "default",node_count= 1,vm_size = "Standard_DS3_v2",zones= null,labels=null,taints=null,cluster_auto_scaling= false,cluster_auto_scaling_min_count = null,cluster_auto_scaling_max_count = null})
+
+var.kubernetes_version
+  Kubernetes version
+
+  Enter a value: 1.17.11
+
+var.location
+  Azure region of the AKS cluster
+
+  Enter a value: Central India
+
+var.log_analytics_workspace_id
+  Resource id of the Log Analytics workspace
+
+  Enter a value: /subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourcegroups/k8/providers/microsoft.operationalinsights/workspaces/k8workspace227
+
+var.name
+  The name of the AKS cluster
+
+  Enter a value: KubernetesAKS8
+
+var.private_cluster
+  Deploy an AKS cluster without a public accessible API endpoint.
+
+  Enter a value: false
+
+var.resource_group_name
+  Name of the AKS cluster resource group
+
+  Enter a value: K8
+
+var.sla_sku
+  Define the SLA under which the managed master control plane of AKS is running.
+
+  Enter a value: Free
+
+var.vnet_subnet_id
+  Resource id of the Virtual Network subnet
+
+  Enter a value: /subscriptions/7c8a4792-df3d-4025-8290-4ba618a6a514/resourceGroups/K8/providers/Microsoft.Network/virtualNetworks/k8kubernetes12/subnets/k8kubersubnet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{pool1= ({node_count= 1,vm_size = "Standard_DS3_v2",zones= null,labels= null,taints= null,node_os= "Linux",cluster_auto_scaling= true,cluster_auto_scaling_min_count = 1,cluster_auto_scaling_max_count = 2})}
+
+
+
+
+
+
+c
+
+
+
+
+
+
